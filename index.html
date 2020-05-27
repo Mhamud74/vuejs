@@ -41,8 +41,10 @@
 			   </form>
 			   <hr>
 		   <ul class="list-group">
-			   <li v-for="item in items" class="list-group-item">
+			   <li v-for="(item, index) in items" :key="index" class="list-group-item">
+			     <button class="btn btn-xs btn-danger" @click="removeItem(index)">X</button>
 			   <div class="itmename">{{ item.name }} &nbsp;&nbsp;     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input v-model="item.price"></div> 
+			 
 			   </li>
 			   <li class="list-group-item">
 			  Total : <span class="textprice">{{ total }}</span>
@@ -81,8 +83,12 @@
 		   name:this.newItem,
 		   price: 0.0
 		   })
+		   },
+	  
+	   removeItem(index){
+		   this.items.splice(index,1)
 		   }
-	   }
+   }
 })
 		</script>
   </body>
