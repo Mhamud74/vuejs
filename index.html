@@ -13,6 +13,19 @@
 		.content{
 		paddint-top:20%;
 		}
+		.itmename {
+	font-size: 30px;
+	text-transform: capitalize;
+	width: ;
+}input {
+	width: 90px;
+	
+}.textprice {
+	text-align: center;
+	margin-left: 114px;
+	font-size: 25px;
+	font-weight: 700;
+}
 		</style>
   </head>
   <body>
@@ -29,8 +42,12 @@
 			   <hr>
 		   <ul class="list-group">
 			   <li v-for="item in items" class="list-group-item">
-			   {{ item.name }}  -  {{ item.price }}
+			   <div class="itmename">{{ item.name }} &nbsp;&nbsp;     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input v-model="item.price"></div> 
 			   </li>
+			   <li class="list-group-item">
+			  Total : <span class="textprice">{{ total }}</span>
+			   </li>
+			  
 			   </ul>
 		   </div>
 	   </div>
@@ -49,6 +66,15 @@
     ],
 	newItem: ''
    },
+   computed:{
+	   total(){
+		   var total =0
+		   this.items.forEach(item => {
+			   total+= parseFloat(item.price)
+			   })
+			   return total
+		   }
+	   },
    methods:{
 	   addItem(){
 		   this.items.push({
