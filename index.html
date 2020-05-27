@@ -22,8 +22,9 @@
 	   <div class="col-md-4 content col-md-offset-4">
 		   <h1 class="text-center">Bazar List</h1>
 		   <hr>
-		   <form @submit.prevent="addItem">
+		   <form v-on:submit.prevent="addItem">
 			   <input v-model="newItem" class="form-control" />
+			   {{ newItem }}
 			   </form>
 			   <hr>
 		   <ul class="list-group">
@@ -46,13 +47,13 @@
 	{name: 'rice', price: 20},
 	{name: 'rice', price: 20},
     ],
-	newItem:''
+	newItem: ''
    },
-   method:{
+   methods:{
 	   addItem(){
 		   this.items.push({
 		   name:this.newItem,
-		   price:0.0
+		   price: 0.0
 		   })
 		   }
 	   }
